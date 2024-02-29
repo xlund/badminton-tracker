@@ -1,6 +1,8 @@
 package main
 
 import (
+	"flag"
+
 	"github.com/passageidentity/passage-go"
 	"github.com/xlund/badminton-tracker/game"
 )
@@ -36,9 +38,8 @@ func main() {
 	// }
 	// fmt.Printf("Application launched and running on http://localhost:%s\n", port)
 	// http.ListenAndServe("localhost:"+port, mux)
-
-	games := game.CsvParser("data.csv")
-	for _, g := range games {
-		println(g.ResultString())
-	}
+	file := flag.String("file", "data.csv", "The file to parse")
+	flag.Parse()
+	games := game.CsvParser(*file)
+	println(games[12].ResultString())
 }

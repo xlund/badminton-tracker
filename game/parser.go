@@ -30,10 +30,8 @@ func CsvParser(fp string) []Game {
 
 func FromCsvRow(row []string) Game {
 	id := ParseInt(row[0])
-	date, err := time.Parse("YYYY-MM-DD", row[2])
-	if err != nil {
-		println(err.Error())
-	}
+	date, _ := time.Parse("YYYY-MM-DD", row[2])
+	// date := time.Now()
 	home := ParseTeam(row[4], row[5])
 	away := ParseTeam(row[6], row[7])
 	gameType := ParseGameType(home, away)
