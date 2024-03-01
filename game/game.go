@@ -16,6 +16,18 @@ const (
 type GameType string
 type Winner string
 
+type GameList []Game
+
+func (g GameList) Filter(f func(Game) bool) GameList {
+	var games GameList
+	for _, game := range g {
+		if f(game) {
+			games = append(games, game)
+		}
+	}
+	return games
+}
+
 type Game struct {
 	id           int
 	date         time.Time

@@ -41,5 +41,13 @@ func main() {
 	file := flag.String("file", "data.csv", "The file to parse")
 	flag.Parse()
 	games := game.CsvParser(*file)
-	println(games[12].ResultString())
+	result := games.Filter(hasResult)
+	for _, g := range result {
+		println(g.ResultString())
+	}
+
+}
+
+func hasResult(g game.Game) bool {
+	return g.HasResult()
 }
