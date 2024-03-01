@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Badminton Tracker</title>
+        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <link rel="stylesheet" href="https://unpkg.com/missing.css" />
+    </head>
+
+    <body>
+        <header class="navbar">
+            <nav aria-label="Site sections">
+                <ul role="list">
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1>Badminton Tracker</h1>
+            <h2>Games</h2>
+            {{range .}}
+            <div class="game">
+                <h3>{{.Result.Winner}} won against {{.Result.Loser}}</h3>
+                <p>{{.Result.Winner.Score}}–{{.Result.Loser.Score}}</p>
+            </div>
+            {{ end}}
+        </main>
+    </body>
+</html>
