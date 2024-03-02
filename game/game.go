@@ -34,6 +34,7 @@ type Game struct {
 	Teams    [2]Team
 	GameType GameType
 	Result   Result
+	Target   int
 }
 
 type Result struct {
@@ -45,6 +46,10 @@ type Result struct {
 
 func (g Game) HasResult() bool {
 	return g.Result.Winner != Team{}
+}
+
+func (g Game) IsTiebreak() bool {
+	return g.Result.Winner.Score >= g.Target && g.Result.Loser.Score >= g.Target
 }
 
 func (g Game) ResultString() string {

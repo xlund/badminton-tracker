@@ -50,6 +50,7 @@ func FromCsvRow(row []string) Game {
 		[2]Team{t1, t2},
 		gameType,
 		result,
+		target,
 	}
 
 }
@@ -105,11 +106,26 @@ func parseGameType(home Team, away Team) GameType {
 }
 
 func calculateResult(t1 Team, t2 Team, target int) Result {
-	if t1.Score == target && t2.Score == target || t1.Score == t2.Score {
-		return Result{
-			Draw: true,
+
+	if t1.Score >= target && t2.Score >= target {
+		if t1.Score == target && t2.Score == target || t1.Score == t2.Score {
+			return Result{
+				Draw: true,
+			}
+		}
+		if t1.Score > t2.Score {
+			return Result{
+				Winner: t1,
+				Loser:  t2,
+			}
+		} else {
+			return Result{
+				Winner: t2,
+				Loser:  t1,
+			}
 		}
 	}
+
 	if t1.Score == target {
 		return Result{
 			Winner: t1,

@@ -1,18 +1,18 @@
-<table>
+<table id="games-table" class="fullbleed">
+  <thead>
     <tr>
-        <th>Game</th>
-        <th>Winner</th>
-        <th>Loser</th>
-        <th>Winner Score</th>
-        <th>Loser Score</th>
+      <th>Winner</th>
+      <th>Loser</th>
+      <th>Score</th>
     </tr>
+  </thead>
+  <tbody>
     {{range .}}
-    <tr>
-        <td>{{.ID}}</td>
-        <td>{{template "team.html" .Result.Winner}}</td>
-        <td>{{template "team.html" .Result.Loser}}</td>
-        <td>{{.Result.Winner.Score}}</td>
-        <td>{{.Result.Loser.Score}}</td>
+    <tr id="{{.ID}}">
+      <td>{{ template "team.html" .Result.Winner}}</td>
+      <td>{{template "team.html" .Result.Loser}}</td>
+      <td>{{.Result.Winner.Score}} - {{.Result.Loser.Score}}</td>
     </tr>
     {{end}}
+  </tbody>
 </table>

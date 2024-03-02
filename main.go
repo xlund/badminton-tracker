@@ -23,7 +23,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /", app.Home(result[0:10]))
 	mux.Handle("GET /static/", http.StripPrefix("/static/", fs))
-
+	mux.HandleFunc("GET /games/tiebreaks", app.GetTiebreaks(result.Filter(game.Game.IsTiebreak)))
 	println("Application launched and running on http://localhost:3000")
 	http.ListenAndServe("localhost:3000", mux)
 
