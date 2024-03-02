@@ -11,5 +11,5 @@ type Team struct {
 }
 
 func (t Team) String() string {
-	return fmt.Sprintf("%s, %s", t.P1.name, t.P2.name)
+	return fmt.Sprintf("%s, %s", t.P1.Name, t.P2.Name)
 }

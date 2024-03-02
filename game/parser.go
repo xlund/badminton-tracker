@@ -32,10 +32,12 @@ func CsvParser(fp string) GameList {
 }
 
 func FromCsvRow(row []string) Game {
-	id := parseInt(row[0])
-	date, _ := time.Parse("YYYY-MM-DD", row[2])
-	// date := time.Now()
-
+	ID := parseInt(row[0])
+	layout := "2006-01-02"
+	date, err := time.Parse(layout, row[2])
+	if err != nil {
+		println(err.Error())
+	}
 	t1 := parseTeam(row[4], row[5], parseInt(row[8]))
 	t2 := parseTeam(row[6], row[7], parseInt(row[9]))
 	target := parseInt(row[3])
@@ -43,7 +45,7 @@ func FromCsvRow(row []string) Game {
 	result := calculateResult(t1, t2, target)
 
 	return Game{
-		id,
+		ID,
 		date,
 		[2]Team{t1, t2},
 		gameType,
@@ -64,7 +66,7 @@ func parseTeam(p1, p2 string, score int) Team {
 	if p2 == "" {
 		return Team{
 			P1: Player{
-				name: caser.String(p1),
+				Name: caser.String(p1),
 			},
 			P2:    Player{},
 			Score: score,
@@ -72,10 +74,10 @@ func parseTeam(p1, p2 string, score int) Team {
 	}
 	return Team{
 		P1: Player{
-			name: caser.String(p1),
+			Name: caser.String(p1),
 		},
 		P2: Player{
-			name: caser.String(p2),
+			Name: caser.String(p2),
 		},
 		Score: score,
 	}

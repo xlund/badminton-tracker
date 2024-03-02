@@ -3,9 +3,9 @@ package game
 import "strings"
 
 type Player struct {
-	name string
+	Name string
 }
 
 func (p Player) LowerName() string {
-	return strings.ToLower(p.name)
+	return strings.ToLower(p.Name)
 }

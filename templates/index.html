@@ -5,7 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Badminton Tracker</title>
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-        <link rel="stylesheet" href="https://unpkg.com/missing.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+        />
+        <link rel="stylesheet" href="static/style.css" />
     </head>
 
     <body>
@@ -19,12 +23,7 @@
         <main>
             <h1>Badminton Tracker</h1>
             <h2>Games</h2>
-            {{range .}}
-            <div class="game">
-                <h3>{{.Result.Winner}} won against {{.Result.Loser}}</h3>
-                <p>{{.Result.Winner.Score}}–{{.Result.Loser.Score}}</p>
-            </div>
-            {{ end}}
+            {{ template "games.html" . }}
         </main>
     </body>
 </html>

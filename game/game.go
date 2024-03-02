@@ -29,8 +29,8 @@ func (g GameList) Filter(f func(Game) bool) GameList {
 }
 
 type Game struct {
-	id       int
-	date     time.Time
+	ID       int
+	Date     time.Time
 	Teams    [2]Team
 	GameType GameType
 	Result   Result
@@ -53,7 +53,7 @@ func (g Game) ResultString() string {
 	}
 	result := g.Result
 	if g.GameType == "singles" {
-		return fmt.Sprintf("------\n%s beat %s\nScore: %v—%v\n------\n\n", result.Winner.P1.name, result.Loser.P1.name, result.Winner.Score, result.Loser.Score)
+		return fmt.Sprintf("------\n%s beat %s\nScore: %v—%v\n------\n\n", result.Winner.P1.Name, result.Loser.P1.Name, result.Winner.Score, result.Loser.Score)
 	}
 	return fmt.Sprintf("------\n{%s} beat {%s}\nScore: %v—%v\n------\n\n", result.Winner, result.Loser, result.Winner.Score, result.Loser.Score)
 }

@@ -10,7 +10,7 @@ import (
 
 func (a *App) Home(games game.GameList) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tmpl, err := template.ParseFiles("templates/index.html")
+		tmpl, err := template.ParseFiles("templates/index.html", "templates/games.html", "templates/partials/result.html", "templates/partials/team.html")
 		if err != nil {
 			log.Fatal(err)
 		}

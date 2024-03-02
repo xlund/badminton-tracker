@@ -1,0 +1,18 @@
+<table>
+    <tr>
+        <th>Game</th>
+        <th>Winner</th>
+        <th>Loser</th>
+        <th>Winner Score</th>
+        <th>Loser Score</th>
+    </tr>
+    {{range .}}
+    <tr>
+        <td>{{.ID}}</td>
+        <td>{{template "team.html" .Result.Winner}}</td>
+        <td>{{template "team.html" .Result.Loser}}</td>
+        <td>{{.Result.Winner.Score}}</td>
+        <td>{{.Result.Loser.Score}}</td>
+    </tr>
+    {{end}}
+</table>

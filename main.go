@@ -7,8 +7,7 @@ import (
 	"github.com/xlund/badminton-tracker/game"
 )
 
-type App struct {
-}
+type App struct{}
 
 func main() {
 	app := App{}
@@ -16,11 +15,14 @@ func main() {
 	file := flag.String("file", "data.csv", "The file to parse")
 	flag.Parse()
 
+	fs := http.FileServer(http.Dir("./static"))
+
 	games := game.CsvParser(*file)
 	result := games.Filter(hasResult)
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /", app.Home(result))
+	mux.HandleFunc("GET /", app.Home(result[0:10]))
+	mux.Handle("GET /static/", http.StripPrefix("/static/", fs))
 
 	println("Application launched and running on http://localhost:3000")
 	http.ListenAndServe("localhost:3000", mux)
