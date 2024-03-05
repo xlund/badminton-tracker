@@ -8,7 +8,7 @@ import (
 )
 
 func LoadApp() {
-	port, exists := os.LookupEnv("SeRVER_PORT")
+	port, exists := os.LookupEnv("SERVER_PORT")
 	if !exists {
 		port = "3000"
 	}
