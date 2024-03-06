@@ -1,34 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Badminton Tracker</title>
-        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-        <link rel="stylesheet" href="https://unpkg.com/missing.css" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badminton Tracker</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="stylesheet" href="https://unpkg.com/missing.css" />
+  </head>
 
-    <body>
-        <header class="header navbar">
-            <nav aria-label="Site sections">
-                <ul role="list">
-                    <li><a href="/">Home</a></li>
-                </ul>
-            </nav>
-        </header>
+  <body>
+    <header class="header navbar">
+      <nav aria-label="Site sections">
+        <ul role="list">
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
 
-        <main>
-            <h1>Content</h1>
-            <button
-                hx-get="/games/tiebreaks"
-                hx-target="#games-table"
-                hx-swap="outer-html"
-                class="pure-button"
-            >
-                Get tiebreaks
-            </button>
-
-            {{ template "games.html" .}}
-        </main>
-    </body>
+    <main>
+      <h1>Content</h1>
+    </main>
+  </body>
 </html>
